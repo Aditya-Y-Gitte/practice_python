@@ -1,6 +1,6 @@
 import requests
 import json
-from datetime import datetime, date
+from datetime import datetime
 
 file_path = "/workspaces/practice_python/url.json"
 
@@ -25,26 +25,26 @@ def match_tag(tags):
 def filter_urls_with_exe(urls):
     temp = []
     if urls is not None:
-            for url_object in urls:
-                if is_todays_daytime(url_object["date_added"]):
-                    tags = url_object["tags"]
-                    if match_tag(tags):
-                        temp.append(url_object["url"])
+        for url_object in urls:
+            if is_todays_daytime(url_object["date_added"]):
+                tags = url_object["tags"]
+                if match_tag(tags):
+                    temp.append(url_object["url"])
     return temp
 
 def store_urls(json_response, file_path):
     """
-    Stores URLs with the "exe" tag from the given JSON response into a file.
+    Stores URLs with "exe" tag from given JSON response into a file.
 
     Args:
-        json_response: The JSON response containing the URLs.
-        file_path: The path to the file where URLs will be stored.
+        json_response: JSON response containing URLs.
+        file_path: path to the file where URLs will be stored.
     """
 
     try:
-        urls = json_response["urls"]  # Extract the 'urls' list from the response
+        urls = json_response["urls"]  # Extract 'urls' list from the response
 
-        # Filter URLs with the "exe" tag
+        # Filter URLs with "exe" tag
         urls_with_exe = filter_urls_with_exe(urls)
     
         # Write the updated data back to the file
@@ -100,6 +100,6 @@ def query_urlhaus(auth_key, url):
 
 
 
-auth_key = "" #obtain and paste here
+auth_key = "" #obtain API token and paste here
 url = "https://urlhaus-api.abuse.ch/v1/urls/recent/"
 query_urlhaus(auth_key, url)

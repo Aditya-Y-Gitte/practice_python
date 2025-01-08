@@ -1,3 +1,11 @@
+# Function |	Input	       |     Output	          |  Use Case
+# ----------------------------------------------------------------------------------
+# load	   | File object (JSON)| Python object	      |  Reading JSON from a file
+# dump	   | Python object	   | File object (JSON)	  |  Writing JSON to a file
+# loads	   | JSON string	   | Python object	      |  Parsing JSON from a string
+# dumps	   | Python object	   | JSON string	      |  Converting to JSON string
+
+
 import json
 
 name = input("Enter Name: ")
